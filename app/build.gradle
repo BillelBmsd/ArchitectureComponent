@@ -27,8 +27,8 @@ dependencies {
     annotationProcessor  "android.arch.lifecycle:compiler:$lifecycle_version"
 
     // room component
-    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
-    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
