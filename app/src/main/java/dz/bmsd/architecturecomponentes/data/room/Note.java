@@ -1,4 +1,4 @@
-package dz.bmsd.architecturecomponentes.room;
+package dz.bmsd.architecturecomponentes.data.room;
 
 
 import android.arch.persistence.room.ColumnInfo;

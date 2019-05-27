@@ -13,11 +13,11 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".AddEditNoteActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".view.AddEditNoteActivity"
+            android:parentActivityName=".view.MainActivity"
             />
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".view.MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

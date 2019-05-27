@@ -1,4 +1,4 @@
-package dz.bmsd.architecturecomponentes;
+package dz.bmsd.architecturecomponentes.view;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -20,14 +20,16 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import dz.bmsd.architecturecomponentes.room.Note;
+import dz.bmsd.architecturecomponentes.R;
+import dz.bmsd.architecturecomponentes.data.room.Note;
+import dz.bmsd.architecturecomponentes.view.adapter.NoteAdapter;
 import dz.bmsd.architecturecomponentes.view_model.NoteViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     public static final int ADD_NOTE_REQUEST_CODE = 1;
-    public static final int EDIT_NOTE_REQUEST_CODE = 1;
+    public static final int EDIT_NOTE_REQUEST_CODE = 2;
 
     private NoteViewModel noteViewModel;
 

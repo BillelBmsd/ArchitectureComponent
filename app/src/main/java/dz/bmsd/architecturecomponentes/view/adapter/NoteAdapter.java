@@ -1,4 +1,4 @@
-package dz.bmsd.architecturecomponentes;
+package dz.bmsd.architecturecomponentes.view.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.recyclerview.extensions.ListAdapter;
@@ -9,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import dz.bmsd.architecturecomponentes.room.Note;
+import dz.bmsd.architecturecomponentes.R;
+import dz.bmsd.architecturecomponentes.data.room.Note;
 
 /**
  * Created by Bilo on 23,May,2019
@@ -21,7 +19,7 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
     private OnItemClickListener listener;
 
-    protected NoteAdapter() {
+    public NoteAdapter() {
         super(DIFF_CALLBACK);
     }
 
@@ -56,7 +54,9 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         noteHolder.textDescription.setText(currentNote.getDescription());
     }
 
-
+    public Note getNote(int position) {
+        return getItem(position);
+    }
 
 
     class NoteHolder extends RecyclerView.ViewHolder {
@@ -81,9 +81,6 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         }
     }
 
-    public Note getNote(int position) {
-        return getItem(position);
-    }
 
     public interface OnItemClickListener {
         void onItemClick(Note note);

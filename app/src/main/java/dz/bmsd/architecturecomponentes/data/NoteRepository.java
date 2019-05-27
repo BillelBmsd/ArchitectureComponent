@@ -1,4 +1,4 @@
-package dz.bmsd.architecturecomponentes;
+package dz.bmsd.architecturecomponentes.data;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
@@ -6,9 +6,9 @@ import android.os.AsyncTask;
 
 import java.util.List;
 
-import dz.bmsd.architecturecomponentes.room.Note;
-import dz.bmsd.architecturecomponentes.room.NoteDao;
-import dz.bmsd.architecturecomponentes.room.NoteDatabase;
+import dz.bmsd.architecturecomponentes.data.room.Note;
+import dz.bmsd.architecturecomponentes.data.room.NoteDao;
+import dz.bmsd.architecturecomponentes.data.room.NoteDatabase;
 
 public class NoteRepository {
 

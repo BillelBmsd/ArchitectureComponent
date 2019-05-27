@@ -1,15 +1,14 @@
 package dz.bmsd.architecturecomponentes.view_model;
 
 import android.app.Application;
-import android.app.ListActivity;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
 import java.util.List;
 
-import dz.bmsd.architecturecomponentes.NoteRepository;
-import dz.bmsd.architecturecomponentes.room.Note;
+import dz.bmsd.architecturecomponentes.data.NoteRepository;
+import dz.bmsd.architecturecomponentes.data.room.Note;
 
 /**
  * Created by Bilo on 23,May,2019

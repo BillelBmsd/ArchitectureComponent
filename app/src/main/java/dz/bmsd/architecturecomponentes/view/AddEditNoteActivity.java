@@ -1,4 +1,4 @@
-package dz.bmsd.architecturecomponentes;
+package dz.bmsd.architecturecomponentes.view;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
+
+import dz.bmsd.architecturecomponentes.R;
 
 public class AddEditNoteActivity extends AppCompatActivity {
 
