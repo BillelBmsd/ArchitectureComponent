@@ -57,4 +57,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
             this.textPriority = itemView.findViewById(R.id.text_priority);
         }
     }
+
+    public Note getNote(int position){
+        return notes.get(position);
+    }
 }
