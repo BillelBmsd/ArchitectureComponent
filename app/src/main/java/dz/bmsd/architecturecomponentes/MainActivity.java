@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(@Nullable List<Note> notes) {
                 //update recycleView
                 Log.d(TAG, "onChanged: ");
-                adapter.setNotes(notes);
+                adapter.submitList(notes);
             }
         });
 
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         }).attachToRecyclerView(recyclerView);
 
 
-        adapter.setOnItemClickListner(new NoteAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new NoteAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Note note) {
                 Intent intent = new Intent(MainActivity.this, AddEditNoteActivity.class);

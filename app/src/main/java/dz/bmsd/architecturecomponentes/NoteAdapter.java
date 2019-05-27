@@ -1,6 +1,8 @@
 package dz.bmsd.architecturecomponentes;
 
 import android.support.annotation.NonNull;
+import android.support.v7.recyclerview.extensions.ListAdapter;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +17,28 @@ import dz.bmsd.architecturecomponentes.room.Note;
 /**
  * Created by Bilo on 23,May,2019
  */
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
-    private List<Note> notes = new ArrayList<>();
+public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
+
     private OnItemClickListener listener;
+
+    protected NoteAdapter() {
+        super(DIFF_CALLBACK);
+    }
+
+    public static final DiffUtil.ItemCallback<Note> DIFF_CALLBACK = new DiffUtil.ItemCallback<Note>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Note oldNote, @NonNull Note newNote) {
+            return oldNote.getId() == newNote.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Note oldNote, @NonNull Note newNote) {
+            return oldNote.getTitle().equals(newNote.getTitle()) &&
+                    oldNote.getDescription().equals(newNote.getDescription()) &&
+                    oldNote.getPriority() == newNote.getPriority();
+        }
+    };
+
 
     @NonNull
     @Override
@@ -29,21 +50,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NoteHolder noteHolder, int i) {
-        Note currentNote = notes.get(i);
+        Note currentNote = getItem(i);
         noteHolder.textPriority.setText(String.valueOf(currentNote.getPriority()));
         noteHolder.textTitle.setText(currentNote.getTitle());
         noteHolder.textDescription.setText(currentNote.getDescription());
     }
 
-    @Override
-    public int getItemCount() {
-        return this.notes.size();
-    }
 
-    public void setNotes(List<Note> notes) {
-        this.notes = notes;
-        notifyDataSetChanged();
-    }
+
 
     class NoteHolder extends RecyclerView.ViewHolder {
         private TextView textTitle;
@@ -59,23 +73,23 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (listener != null && getAdapterPosition() != RecyclerView.NO_POSITION){
-                        listener.onItemClick(notes.get(getAdapterPosition()));
+                    if (listener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(getItem(getAdapterPosition()));
                     }
                 }
             });
         }
     }
 
-    public Note getNote(int position){
-        return notes.get(position);
+    public Note getNote(int position) {
+        return getItem(position);
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(Note note);
     }
 
-    public void setOnItemClickListner(OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
 }
