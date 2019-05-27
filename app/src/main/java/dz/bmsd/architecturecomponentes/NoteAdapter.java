@@ -17,7 +17,7 @@ import dz.bmsd.architecturecomponentes.room.Note;
  */
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
     private List<Note> notes = new ArrayList<>();
-
+    private OnItemClickListener listener;
 
     @NonNull
     @Override
@@ -55,10 +55,27 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
             this.textTitle = itemView.findViewById(R.id.text_title);
             this.textDescription = itemView.findViewById(R.id.text_description);
             this.textPriority = itemView.findViewById(R.id.text_priority);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null && getAdapterPosition() != RecyclerView.NO_POSITION){
+                        listener.onItemClick(notes.get(getAdapterPosition()));
+                    }
+                }
+            });
         }
     }
 
     public Note getNote(int position){
         return notes.get(position);
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(Note note);
+    }
+
+    public void setOnItemClickListner(OnItemClickListener listener){
+        this.listener = listener;
     }
 }
